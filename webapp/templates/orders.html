@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Оформленные заказы</h1>
+<table>
+    <tr><th>№</th><th>Клиент</th><th>Телефон</th><th>Тур</th><th>Чел.</th><th>Итого, руб.</th></tr>
+    {% for o in orders %}
+    <tr>
+        <td>{{ o.order_id }}</td>
+        <td>{{ o.client_name }}</td>
+        <td>{{ o.phone }}</td>
+        <td>{{ o.tour.tour_name }}</td>
+        <td>{{ o.persons }}</td>
+        <td>{{ "%.2f"|format(o.tour.price * o.persons) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

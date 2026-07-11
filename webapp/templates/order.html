@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Заказ тура: {{ tour.tour_name }}</h1>
+<p>Страна: {{ tour.country.country_name }}, длительность: {{ tour.duration }} дн.,
+   цена за 1 чел.: {{ "%.2f"|format(tour.price) }} руб.</p>
+<form method="post">
+    <p><label>Ф.И.О. клиента:<br><input name="client_name" required size="40"></label></p>
+    <p><label>Телефон:<br><input name="phone" required size="20"></label></p>
+    <p><label>Количество человек:<br><input name="persons" type="number" value="1" min="1"></label></p>
+    <p><button type="submit">Оформить заказ</button></p>
+</form>
+{% endblock %}

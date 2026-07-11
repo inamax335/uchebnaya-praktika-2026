@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Каталог туров</h1>
+<table>
+    <tr><th>Тур</th><th>Страна</th><th>Дней</th><th>Цена, руб.</th><th></th></tr>
+    {% for t in tours %}
+    <tr>
+        <td>{{ t.tour_name }}</td>
+        <td>{{ t.country.country_name }}</td>
+        <td>{{ t.duration }}</td>
+        <td>{{ "%.2f"|format(t.price) }}</td>
+        <td><a class="btn" href="{{ url_for('order', tour_id=t.tour_id) }}">Заказать</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
